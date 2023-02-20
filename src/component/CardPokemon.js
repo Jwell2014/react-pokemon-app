@@ -31,6 +31,7 @@ export default function CardPokemon(props) {
         break;
       case "Eau":
         color = "blue lighten-1";
+
         break;
       case "Plante":
         color = "green lighten-1";
@@ -82,7 +83,7 @@ export default function CardPokemon(props) {
           <div className="card-stacked">
             <div className="card-content">
               <p>Nom{pokemon.name}</p>
-              <p>
+              <p className="date">
                 <small>{formatDate(pokemon.created)}</small>
               </p>
               {pokemon.types.map((type) => (
