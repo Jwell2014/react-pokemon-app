@@ -15,7 +15,56 @@ export default function DetailPokemon() {
   if (!pokemon) {
     return <h2>Pokémon introuvable !</h2>;
   }
+ // Permet un affichage de la date JJ/MM/AAAA
+ const formatDate = (date) => {
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+};
 
+const formatType = (type) => {
+  let color;
+
+  switch (type) {
+    case "Feu":
+      color = "red lighten-1";
+      break;
+    case "Eau":
+      color = "blue lighten-1";
+
+      break;
+    case "Plante":
+      color = "green lighten-1";
+      break;
+    case "Insecte":
+      color = "brown lighten-1";
+      break;
+    case "Normal":
+      color = "grey lighten-3";
+      break;
+    case "Vol":
+      color = "blue lighten-3";
+      break;
+    case "Poison":
+      color = "deep-purple accent-1";
+      break;
+    case "Fée":
+      color = "pink lighten-4";
+      break;
+    case "Psy":
+      color = "deep-purple darken-2";
+      break;
+    case "Electrik":
+      color = "lime accent-1";
+      break;
+    case "Combat":
+      color = "deep-orange";
+      break;
+    default:
+      color = "grey";
+      break;
+  }
+
+  return `chip ${color}`;
+};
   return (
     <div>
       {pokemon ? (
@@ -52,7 +101,7 @@ export default function DetailPokemon() {
                           <strong>{pokemon.cp}</strong>
                         </td>
                       </tr>
-                      {/* <tr>
+                      <tr>
                         <td>Types</td>
                         <td>
                           {pokemon.types.map((type) => (
@@ -65,12 +114,12 @@ export default function DetailPokemon() {
                       <tr>
                         <td>Date de création</td>
                         <td>{formatDate(pokemon.created)}</td>
-                      </tr> */}
+                      </tr>
                     </tbody>
                   </table>
                 </div>
                 <div className="card-action">
-                  <Link to="/">Retour</Link>
+                  <Link to="/list">Retour</Link>
                 </div>
               </div>
             </div>
