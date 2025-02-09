@@ -1,24 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import listPokemon from "../models/listPokemon";
+import { useParams } from "react-router-dom";
 
-export default function DetailPokemon({ id }) {
+export default function DetailPokemon() {
+  const { id } = useParams(); // Récupère l'ID du Pokémon depuis l'URL
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
-    listPokemon.forEach((pokemon) => {
-      if (id.params.id === pokemon.id.toString()) {
-        setPokemon(pokemon);
-      }
-    });
-  }, [id.params.id]);
+    const foundPokemon = listPokemon.find((p) => p.id.toString() === id);
+    setPokemon(foundPokemon);
+  }, [id]); // Utilise l'ID comme dépendance
 
-  function handleItem(evt) {
-    console.log("clic");
+  if (!pokemon) {
+    return <h2>Pokémon introuvable !</h2>;
   }
 
   return (
-    <div onClick={(evt) => handleItem(evt)}>
+    <div>
       {pokemon ? (
         <div className="row">
           <div className="col s12 m8 offset-m2">

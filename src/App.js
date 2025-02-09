@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import ListPokemon from "./models/listPokemon";
 import AllPokemon from "./pages/AllPokemon";
 import DetailPokemon from "./pages/DetailPokemon";
@@ -21,12 +21,12 @@ export default function App() {
             </Link>
           </div>
         </nav>
-        <AllPokemon pokemons={pokemons} />
-        <Switch>
+
+        <Routes>
           <Route path="/" element={<AllPokemon pokemons={pokemons} />} />
-          <Route path="/list" element={<AllPokemon pokemons={pokemons} />} />
-          <Route path="/list/:id" component={<DetailPokemon />} />
-        </Switch>
+          {/* <Route path="/list" element={<AllPokemon pokemons={pokemons} />} /> */}
+          <Route path="/list/:id" element={<DetailPokemon />} />
+        </Routes>
       </div>
     </Router>
   );

@@ -1,20 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CardPokemon(props) {
   const { pokemon } = props;
   // Recuperation du style du parent sur le border-color par les props
   const borderColor = props;
   const [color, setColor] = useState("");
+  const navigate = useNavigate();
 
   function showBorder() {
     setColor("green");
-    console.log("ok");
   }
 
   function hideBorder() {
     // Recuperation de la valeur du props de la border color
     setColor(borderColor.borderColor);
-    console.log("top");
   }
 
   // Permet un affichage de la date JJ/MM/AAAA
@@ -68,12 +68,18 @@ export default function CardPokemon(props) {
     return `chip ${color}`;
   };
 
+  function handItem() {
+    console.log("id" + pokemon.id);
+    navigate(`/list/${pokemon.id}`);
+  }
+
   return (
     <>
       <div
         className="col s6 m4"
         onMouseEnter={showBorder}
         onMouseLeave={hideBorder}
+        onClick={handItem}
       >
         {/* Attribution du style a la div de la card */}
         <div className="card horizontal" style={{ borderColor: color }}>

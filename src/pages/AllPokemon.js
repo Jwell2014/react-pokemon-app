@@ -2,18 +2,14 @@ import CardPokemon from "../component/CardPokemon";
 import React from "react";
 
 export default function AllPokemon(props) {
-  const { pokemons, setPokemons } = props;
-
-  function handItem(id) {
-    console.log(id);
-  }
+  const { pokemons } = props;
 
   return (
     <div>
       <div>
         <h1 className="center">Pokédex</h1>
         <div className="container">
-          <div className="row" onClick={(id) => handItem(id)}>
+          <div className="row">
             {pokemons.map((pokemon) => (
               <CardPokemon
                 pokemon={pokemon}
